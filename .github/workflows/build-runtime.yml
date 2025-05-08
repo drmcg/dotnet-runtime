@@ -2,6 +2,10 @@ name: Build .NET 8 Runtime for ARM32
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ release/8.0 ]
+  pull_request:
+    branches: [ release/8.0 ]
 
 jobs:
   build-arm32:
