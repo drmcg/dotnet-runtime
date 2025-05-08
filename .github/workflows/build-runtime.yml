@@ -1,0 +1,30 @@
+name: Build .NET 8 Runtime for ARM32
+
+jobs:
+  build-arm32:
+    runs-on: ubuntu-latest
+    name: Build for linux-arm (ARM32)
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git cmake clang python3 curl tar \
+            libssl-dev libicu-dev liblttng-ust-dev libkrb5-dev zlib1g-dev \
+            gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+
+      - name: Build .NET 8 Runtime for ARM32
+        run: |
+          ./build.sh -c Release -runtimeOS linux -runtimeArch arm -cross
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-runtime-arm32
+          path: |
+            artifacts/bin/coreclr/Linux.arm.Release/
+            artifacts/bin/mono/Linux.arm.Release/
+            artifacts/packages/Release/Shipping/
