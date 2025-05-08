@@ -30,7 +30,7 @@ jobs:
 
       - name: Generate RootFS for ARM32 (bullseye)
         run: |
-          sudo ./eng/common/cross/build-rootfs.sh arm bullseye http://deb.debian.org/debian
+          sudo ./eng/common/cross/build-rootfs.sh arm debian bullseye
 
       - name: Build .NET 8 Runtime for ARM32
         env:
