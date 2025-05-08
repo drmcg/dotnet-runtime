@@ -28,9 +28,9 @@ jobs:
         run: |
           sudo rm -rf .tools/rootfs/arm
 
-      - name: Generate RootFS for ARM32 (bullseye)
+      - name: Generate RootFS for ARM32 (Ubuntu 20.04 focal)
         run: |
-          sudo ./eng/common/cross/build-rootfs.sh arm debian bullseye
+          sudo ./eng/common/cross/build-rootfs.sh arm ubuntu focal
 
       - name: Build .NET 8 Runtime for ARM32
         env:
