@@ -30,7 +30,10 @@ jobs:
 
       - name: Generate RootFS for ARM32 (bullseye)
         env:
+          ROOTFS_DEBIAN_FLAVOR: bullseye
           ROOTFS_DEBIAN_MIRROR: http://deb.debian.org/debian
+          ROOTFS_ALPINE_MIRROR: ""
+          ROOTFS_UBUNTU_MIRROR: ""
         run: |
           sudo ./eng/common/cross/build-rootfs.sh arm bullseye
 
