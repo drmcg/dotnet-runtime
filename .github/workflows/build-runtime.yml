@@ -23,7 +23,13 @@ jobs:
             libssl-dev libicu-dev liblttng-ust-dev libkrb5-dev zlib1g-dev \
             gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
 
+      - name: Generate RootFS for ARM32
+        run: |
+          ./eng/common/cross/build-rootfs.sh arm
+
       - name: Build .NET 8 Runtime for ARM32
+        env:
+          ROOTFS_DIR: ${{ github.workspace }}/artifacts/obj/rootfs/arm
         run: |
           ./build.sh -c Release -runtimeOS linux -runtimeArch arm -cross
 
