@@ -21,7 +21,7 @@ jobs:
           sudo apt-get install -y \
             git cmake clang python3 curl tar \
             libssl-dev libicu-dev liblttng-ust-dev libkrb5-dev zlib1g-dev \
-            gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+            gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf debootstrap
 
       - name: Generate RootFS for ARM32
         run: |
