@@ -24,9 +24,13 @@ jobs:
             gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf \
             debootstrap
 
-      - name: Generate RootFS for ARM32
+      - name: Clean up previous rootfs (optional)
         run: |
-          sudo ./eng/common/cross/build-rootfs.sh arm
+          sudo rm -rf .tools/rootfs/arm
+
+      - name: Generate RootFS for ARM32 (bullseye)
+        run: |
+          sudo ./eng/common/cross/build-rootfs.sh arm bullseye
 
       - name: Build .NET 8 Runtime for ARM32
         env:
