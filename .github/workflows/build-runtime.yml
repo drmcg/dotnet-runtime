@@ -28,9 +28,9 @@ jobs:
         run: |
           sudo rm -rf .tools/rootfs/arm
 
-      - name: Generate RootFS for ARM32 (Ubuntu 20.04 focal, no lldb)
+      - name: Generate RootFS for ARM32 (Ubuntu 20.04 focal,  lldb 10)
         run: |
-          sudo ./eng/common/cross/build-rootfs.sh arm ubuntu focal --skipunpacklldb
+          sudo ./eng/common/cross/build-rootfs.sh arm ubuntu focal --lldb 10
 
       - name: Build .NET 8 Runtime for ARM32
         env:
