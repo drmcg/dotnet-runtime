@@ -21,11 +21,12 @@ jobs:
           sudo apt-get install -y \
             git cmake clang python3 curl tar \
             libssl-dev libicu-dev liblttng-ust-dev libkrb5-dev zlib1g-dev \
-            gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf debootstrap
+            gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf \
+            debootstrap
 
       - name: Generate RootFS for ARM32
         run: |
-          ./eng/common/cross/build-rootfs.sh arm
+          sudo ./eng/common/cross/build-rootfs.sh arm
 
       - name: Build .NET 8 Runtime for ARM32
         env:
