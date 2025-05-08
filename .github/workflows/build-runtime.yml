@@ -1,5 +1,8 @@
 name: Build .NET 8 Runtime for ARM32
 
+on:
+  workflow_dispatch:
+
 jobs:
   build-arm32:
     runs-on: ubuntu-latest
