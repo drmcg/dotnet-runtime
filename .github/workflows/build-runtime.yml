@@ -22,20 +22,15 @@ jobs:
             git cmake clang python3 curl tar \
             libssl-dev libicu-dev liblttng-ust-dev libkrb5-dev zlib1g-dev \
             gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf \
-            debootstrap debian-archive-keyring
-
-      - name: Install QEMU for ARM emulation
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y qemu-user-static
+            debootstrap debian-archive-keyring qemu-user-static
 
       - name: Clean up previous rootfs (optional)
         run: |
           sudo rm -rf .tools/rootfs/arm
 
-      - name: Generate RootFS for ARM32 (Ubuntu 20.04 focal)
+      - name: Generate RootFS for ARM32 (Ubuntu 20.04 focal, no lldb)
         run: |
-          sudo ./eng/common/cross/build-rootfs.sh arm ubuntu focal
+          sudo ./eng/common/cross/build-rootfs.sh arm ubuntu focal --skipunpacklldb
 
       - name: Build .NET 8 Runtime for ARM32
         env:
