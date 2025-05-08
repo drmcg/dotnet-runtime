@@ -29,13 +29,8 @@ jobs:
           sudo rm -rf .tools/rootfs/arm
 
       - name: Generate RootFS for ARM32 (bullseye)
-        env:
-          ROOTFS_DEBIAN_FLAVOR: bullseye
-          ROOTFS_DEBIAN_MIRROR: http://deb.debian.org/debian
-          ROOTFS_ALPINE_MIRROR: ""
-          ROOTFS_UBUNTU_MIRROR: ""
         run: |
-          sudo ./eng/common/cross/build-rootfs.sh arm bullseye
+          sudo ./eng/common/cross/build-rootfs.sh arm bullseye http://deb.debian.org/debian
 
       - name: Build .NET 8 Runtime for ARM32
         env:
